@@ -11,55 +11,13 @@ shinyUI(fluidPage(
     # A navbarPage is a template for tabs.
     navbarPage(
       "Sea Data",
-      # The tabPanel is a tab.
       tabPanel(
-        # This is the name of the tab.
-        "View Systems",
-        # This is a panel to define more tabs.
-        navlistPanel(
-          # This is a title.
-          "Choose Viewpoint",
-          # Define a tab called "Variables"
-          tabPanel("Variables", 
-                   #Call the function "variables" located in the server.R file
-                   verbatimTextOutput("variables")),
-          # Define a tab called "Frequency of System by Model"
-          tabPanel("Frequency of System by Model", 
-                   #Call the function "model" located in the server.R file
-                   plotlyOutput("model")),
-          # Define a tab called ""Frequency of System by Company"
-          tabPanel("Frequency of System by Company", 
-                   #Call the function "company" located in the server.R file
-                   verbatimTextOutput("company")),
-          tabPanel(
-            # Define a tab called "Summary of Systems"
-            "Summary of Systems",
-            #HTML tag; h1 means Header 1.
-            tags$h1("Type in a System ID:"),
-            #Textbox for the user to type in.
-            textInput("choice", "Select System:"),
-            #HTML tag; H2 means Header 2.
-            tags$h2("Write Variables"),
-            #Calling the "writeSummary" function.
-            verbatimTextOutput("writeSummary"),
-            tags$h2("Read Variables"),
-            verbatimTextOutput("readSummary"),
-            tags$h2("Total Variables"),
-            verbatimTextOutput("totalSummary"),
-            tags$h2("Bandwidth Variables"),
-            verbatimTextOutput("bandwidthSummary"),
-            tags$h2("IO Variables"),
-            verbatimTextOutput("ioSummary")
-          )
-        )
-      ),
-      tabPanel(
-        "Scatter Plot",
+        "Visualizations",
         navlistPanel(
           "Visualization Panel",
           tabPanel(
             "Scatter Plot",
-            tags$h1("Type in a System ID:"),
+            tags$h1("Type in a System ID (1 to 4497):"),
             splitLayout(
               cellWidths = c("50%", "50%"),
               textInput("in1", "Select System:"),
@@ -109,6 +67,48 @@ shinyUI(fluidPage(
             tags$h3("Choice 2"),
             #Plot the function "customPlot2" from the server.R file
             plotlyOutput("customPlot2")
+          )
+        )
+      ),
+      # The tabPanel is a tab.
+      tabPanel(
+        # This is the name of the tab.
+        "View Systems",
+        # This is a panel to define more tabs.
+        navlistPanel(
+          # This is a title.
+          "Choose Viewpoint",
+          # Define a tab called "Variables"
+          tabPanel("Variables", 
+                   #Call the function "variables" located in the server.R file
+                   verbatimTextOutput("variables")),
+          # Define a tab called "Frequency of System by Model"
+          tabPanel("Frequency of System by Model", 
+                   #Call the function "model" located in the server.R file
+                   plotlyOutput("model")),
+          # Define a tab called ""Frequency of System by Company"
+          tabPanel("Frequency of System by Company", 
+                   #Call the function "company" located in the server.R file
+                   verbatimTextOutput("company")),
+          tabPanel(
+            # Define a tab called "Summary of Systems"
+            "Summary of Systems",
+            #HTML tag; h1 means Header 1.
+            tags$h1("Type in a System ID:"),
+            #Textbox for the user to type in.
+            textInput("choice", "Select System:"),
+            #HTML tag; H2 means Header 2.
+            tags$h2("Write Variables"),
+            #Calling the "writeSummary" function.
+            verbatimTextOutput("writeSummary"),
+            tags$h2("Read Variables"),
+            verbatimTextOutput("readSummary"),
+            tags$h2("Total Variables"),
+            verbatimTextOutput("totalSummary"),
+            tags$h2("Bandwidth Variables"),
+            verbatimTextOutput("bandwidthSummary"),
+            tags$h2("IO Variables"),
+            verbatimTextOutput("ioSummary")
           )
         )
       )
